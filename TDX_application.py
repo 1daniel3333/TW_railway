@@ -100,4 +100,5 @@ def gen_train_api_info_to_df(data:pd.DataFrame, ini_station:str, fin_station:str
     summary_train_status = []
     for i in data['TrainTimetables']:
         summary_train_status.append(get_train_sum_info_from_train_dict(i, ini_station,fin_station, hash))
-    return pd.DataFrame(summary_train_status)
+    data = pd.DataFrame(summary_train_status)
+    return data.sort_values('Start_Station').reset_index(drop=True)
